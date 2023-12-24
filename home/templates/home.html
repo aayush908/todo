@@ -1,0 +1,62 @@
+{%extends "index.html" %}
+{%block body %}
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary my-3 mx-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    ADD New Event
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">WORK</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Work Description</label>
+                  <input type="text" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3">
+                    <label for = "date" class="form-label">DATE</label>
+                    <input  placeholder = "date/month/year" ,type="text" class="form-control" id="date">
+                  </div>
+               
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <br><br><br>
+  <table class="table">
+    <thead>
+      <tr class="table-primary">
+        <th scope="col">S.NO</th>
+        <th scope="col">WORK </th>
+        <th scope="col">DESC.</th>
+        <th scope="col">DATE</th>
+        <th scope="col">DELETE</th>
+      </tr>
+    </thead>
+    <tbody class="table-secondary">
+       
+        <tr >
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <td><button class = "danger" >  DELETE</button></td>
+      </tr>
+      
+      
+    </tbody>
+  </table>
+{%endblock body%}
