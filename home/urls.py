@@ -21,4 +21,6 @@ from home import views
 urlpatterns = [
     
     path('' , views.home),
+    path('data' , views.home),
+    path('<int:event_id>', views.home),
 ]
