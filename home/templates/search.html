@@ -1,46 +1,10 @@
 {%extends "index.html" %}
-
-{%block body %}
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary my-3 mx-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    ADD New Event
-  </button>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content" style ="background: linear-gradient(90deg, rgba(85, 31, 89, 1) 0%, rgba(114, 79, 133, 1) 53%, rgba(198, 154, 219, 1) 93%);">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <form action = "/" method = "post">
-                {% csrf_token %}
-                <div class="mb-3">
-                  <label for="work" class="form-label">WORK</label>
-                  <input type="text" class="form-control" id="work"  name = "work" aria-describedby="emailHelp">
-                  </div>
-                <div class="mb-3">
-                  <label for="workdes" class="form-label">Work Description</label>
-                  <input type="text" class="form-control" id="workdes" name = "workdes">
-                </div>
-                <div class="mb-3">
-                    <label for = "date" class="form-label">DATE</label>
-                    <input  placeholder = "date/month/year" type="text" class="form-control" id="date" name = "date">
-                  </div>
-               
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-  <br><br><br>
-  <table class="table">
+{%block body%}
+<p class = "my-2"> <b> YOUR SEARCH RESULTS : </b></p> 
+<br>
+<table class="table">
     <thead>
-      <tr class="table">
+      <tr class="table-primary">
         <th scope="col">S.NO</th>
         <th scope="col">WORK </th>
         <th scope="col">DESC.</th>
@@ -49,14 +13,14 @@
         <th scope="col">EDIT</th>
       </tr>
     </thead>
-    <tbody class="table-r">
-       {% for event in allevent %}
+    <tbody class="table-secondary">
+       {% for event in data %}
         <tr >
         <th scope="row">{{forloop.counter}}</th>
         <td>{{event.work}}</td>
         <td>{{event.workdes}}</td>
         <td>{{event.date}}</td>
-        <td> <a href="remove/{{event.id}}" > <button type="button" class="btn btn-primary my-3 mx-3"> delete </button> </td>
+        <td> <a href=" remove/{{event.id}}" > <button type="button" class="btn btn-primary my-3 mx-3"> delete </button> </td>
         <td> <button type="button" class="btn btn-primary my-3 mx-3" data-bs-toggle="modal" data-bs-target="#editModal{{event.id}}">
           EDIT
         </button></td>
@@ -64,8 +28,7 @@
       </tr>
       <div class="modal fade" id="editModal{{event.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-          <div class="modal-content" style = " background: rgb(85,31,89);
-          background: linear-gradient(90deg, rgba(85,31,89,1) 0%, rgba(133,79,104,1) 59%, rgba(75,13,105,1) 100%);">
+          <div class="modal-content">
             <div class="modal-header">
               <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -98,4 +61,8 @@
       
     </tbody>
   </table>
-{%endblock body%}
+
+
+
+
+{%endblock%}

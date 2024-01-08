@@ -22,5 +22,7 @@ urlpatterns = [
     
     path('' , views.home),
     path('data' , views.home),
-    path('<int:event_id>', views.home),
+    path('edit/<int:event_id>' , views.edit),
+    path('remove/<int:event_id>', views.remove ),
+    path('search', views.search),
 ]
