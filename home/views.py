@@ -1,5 +1,6 @@
 from django.shortcuts import render , HttpResponse, redirect
 from home.models import event
+from django.db.models import Q
 
 # Create your views here.
 def home(request , event_id=0):
@@ -34,8 +35,10 @@ def remove(request , event_id=0):
 def search(request):
     if request.method == "POST":
         data = request.POST.get('find')
+        allevent = event.objects.all()
         print(data)
-        alldata = event.objects.filter(work__icontains = data )
+        alldata = allevent.filter(Q(work__icontains = data) | Q(workdes__icontains = data))
+        
         print(alldata)
     context = {"data":alldata }
     print(context)
